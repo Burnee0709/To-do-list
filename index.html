@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>To-Do List</title>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
-        />
-    </head>
-    <body></body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="main-header">
+          <h1>to-do-list</h1>
+          <span id="task-summary">0 / 0</span>
+        </div>
+        <div id="progress-bar">
+          <div id="progress"></div>
+        </div>
+      </header>
+
+      <form action="">
+        <div id="input-container">
+          <input type="text" placeholder="write your task" />
+          <span id="microphone" class="material-symbols-rounded">mic</span>
+        </div>
+        <button id="submit-task" type="submit">
+          <span class="material-symbols-rounded input-icon">add</span>
+        </button>
+      </form>
+      <ul id="task-list"></ul>
+    </div>
+  </body>
 </html>

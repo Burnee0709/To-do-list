@@ -1,40 +1,193 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
 :root {
-    --font-family: "Poppins", sans-serif;
-    --background: #f4f6fc;
-    --blue: #0a57a2;
-    --black: #1f1f21;
-    --green: #81a969;
-    --red: #cf352e;
-    --progress: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
-    --blue-gradient: linear-gradient(to right, #0a57a2, #0a57a2);
-    --gradient-animation-0: linear-gradient(90deg, #0cebeb, #20e3b2, #29ffc6);
-    --gradient-animation-25: linear-gradient(180deg, #0cebeb, #20e3b2, #29ffc6);
-    --gradient-animation-50: linear-gradient(270deg, #0cebeb, #20e3b2, #29ffc6);
-    --gradient-animation-75: linear-gradient(360deg, #0cebeb, #20e3b2, #29ffc6);
-    --gradient-animation-100: linear-gradient(
-        450deg,
-        #0cebeb,
-        #20e3b2,
-        #29ffc6
-    );
+  --font-family: "Poppins", sans-serif;
+  --background: #f4f6fc;
+  --blue: #0a57a2;
+  --black: #1f1f21;
+  --green: #81a969;
+  --red: #cf352e;
+  --progress: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
+  --blue-gradient: linear-gradient(to right, #0a57a2, #0a57a2);
+  --gradient-animation-0: linear-gradient(90deg, #0cebeb, #20e3b2, #29ffc6);
+  --gradient-animation-25: linear-gradient(180deg, #0cebeb, #20e3b2, #29ffc6);
+  --gradient-animation-50: linear-gradient(270deg, #0cebeb, #20e3b2, #29ffc6);
+  --gradient-animation-75: linear-gradient(360deg, #0cebeb, #20e3b2, #29ffc6);
+  --gradient-animation-100: linear-gradient(450deg, #0cebeb, #20e3b2, #29ffc6);
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: white;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+header {
+  background-color: var(--blue);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 30px;
+}
+.main-header {
+  min-width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main header h1 {
+  font-size: 30px;
+  margin: 0;
+}
+#task-summary {
+  background-color: white;
+  color: var(--blue);
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#progress-bar {
+  background-color: white;
+  min-width: 350px;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#progress {
+  background: var(--progress);
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+  transition: 1s ease all;
+}
+form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  min-width: 350px;
+}
+#input-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+input {
+  background-color: white;
+  flex: 1;
+  padding: 16px;
+  padding-right: 50px;
+  border-style: solid;
+  border-width: 2px;
+  border-image: var(--blue-gradient);
+  border-image-slice: 1;
+}
+input::placeholder {
+  color: var(--blue);
+  opacity: 0.6;
+}
+#microphone {
+  color: var(--blue);
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+#submit-task {
+  all: unset;
+  background-color: var(--blue);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+#task-list {
+  min-width: 350px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.task {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  color: black;
+  border: 2px solid transparent;
+  transition: 0.3s ease border;
+}
+.task.completed label {
+  text-decoration: line-through;
+}
+.task.editing {
+  border: 2px solid var(--blue);
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox-group input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.checkbox-group label {
+  user-select: none;
+  cursor: pointer;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.actions button {
+  all: unset;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.task .delete {
+  color: var(--red);
+}
+.task-icon {
+  pointer-events: none;
 }
 
 @keyframes gradient-animation {
-    0% {
-        border-image-source: var(--gradient-animation-0);
-    }
-    25% {
-        border-image-source: var(--gradient-animation-25);
-    }
-    50% {
-        border-image-source: var(--gradient-animation-50);
-    }
-    75% {
-        border-image-source: var(--gradient-animation-75);
-    }
-    100% {
-        border-image-source: var(--gradient-animation-100);
-    }
+  0% {
+    border-image-source: var(--gradient-animation-0);
+  }
+  25% {
+    border-image-source: var(--gradient-animation-25);
+  }
+  50% {
+    border-image-source: var(--gradient-animation-50);
+  }
+  75% {
+    border-image-source: var(--gradient-animation-75);
+  }
+  100% {
+    border-image-source: var(--gradient-animation-100);
+  }
 }
